@@ -1,1 +1,426 @@
-<html>chant-down-babylon</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chant Down Babylon - Legal Defence Fundraiser</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(212, 175, 55, 0.03) 0px,
+                    transparent 1px,
+                    transparent 2px,
+                    rgba(212, 175, 55, 0.03) 3px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 20px 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: #ffd700;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: dubEcho 2s ease-in-out infinite;
+        }
+        
+        @keyframes dubEcho {
+            0%, 100% { transform: scale(1) translateX(0); }
+            25% { transform: scale(1.02) translateX(-2px); }
+            75% { transform: scale(1.02) translateX(2px); }
+        }
+        
+        .tagline {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background: rgba(46, 125, 50, 0.7);
+            border-radius: 25px;
+            display: inline-block;
+        }
+        
+        .lion-symbol {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin: 0 10px;
+            display: inline-block;
+            animation: lionRoar 3s ease-in-out infinite;
+        }
+        
+        @keyframes lionRoar {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(5deg); }
+        }
+        
+        .flyer-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 5px solid #d4af37;
+            border-bottom: 5px solid #2e7d32;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .flyer-container::before {
+            content: "✊";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            opacity: 0.3;
+            animation: raiseFist 2s ease-in-out infinite;
+        }
+        
+        @keyframes raiseFist {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .flyer-image {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid #d4af37;
+            border-right: 5px solid #2e7d32;
+        }
+        
+        .bilingual-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .language-section {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border-left: 4px solid #ffd600;
+            transition: transform 0.3s ease;
+        }
+        
+        .language-section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .language-section h2 {
+            color: #1b5e20;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ffd600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .language-section p {
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .roots-section {
+            background: #0d0d0d;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(46, 125, 50, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(211, 47, 47, 0.1) 0%, transparent 50%);
+            color: #f4f4f4;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 2px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roots-section::before,
+        .roots-section::after {
+            content: "🦁";
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.03;
+            animation: floatLion 20s ease-in-out infinite;
+        }
+        
+        .roots-section::before {
+            top: 10px;
+            left: 10px;
+        }
+        
+        .roots-section::after {
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 10s;
+        }
+        
+        @keyframes floatLion {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            75% { transform: translateY(20px) rotate(-5deg); }
+        }
+        
+        .roots-section h2 {
+            color: #ffd700;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        .roots-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+        }
+        
+        .roots-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .donate-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: pulseDonate 2s ease-in-out infinite;
+            white-space: nowrap;
+        }
+        
+        @keyframes pulseDonate {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .donate-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Tablet styles */
+        @media (min-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .bilingual-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .content-section {
+                padding: 40px 35px;
+            }
+            
+            .roots-section {
+                padding: 50px 40px;
+            }
+            
+            .roots-section::before,
+            .roots-section::after {
+                font-size: 100px;
+            }
+        }
+        
+        /* Large desktop styles */
+        @media (min-width: 1024px) {
+            .content-section {
+                padding: 50px 40px;
+            }
+        }
+        
+        /* Mobile-specific optimizations */
+        @media (max-width: 767px) {
+            .lion-symbol {
+                display: block;
+                margin: 5px auto;
+            }
+            
+            strong {
+                display: inline-block;
+                margin-top: 5px;
+            }
+        }
+        
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <span class="lion-symbol">🦁</span>
+                Chant Down Babylon
+                <span class="lion-symbol">🦁</span>
+            </h1>
+            <p class="tagline">✊ Stand Up for Justice • Solidarity Forever ✊</p>
+        </header>
+        
+        <div class="flyer-container">
+            <img src="chant3.1.png" alt="Chant Down Babylon Reggae Fundraiser Event" class="flyer-image">
+        </div>
+        
+        <div class="content-section">
+            <div class="bilingual-content">
+                <div class="language-section">
+                    <h2>English</h2>
+                    <p>
+                        Join us for an unforgettable night of conscious reggae music and community solidarity! 
+                        This fundraising event brings together the power of music and activism to support our 
+                        brothers and sisters facing legal battles for standing up for justice.
+                    </p>
+                    <p>
+                        <strong>Every pound raised</strong> goes directly to covering legal fees for activists who 
+                        cannot afford representation. When peaceful protesters and community organizers face 
+                        prosecution for defending our rights and freedoms, we must stand together.
+                    </p>
+                    <p>
+                        Through the revolutionary spirit of reggae, we unite as one voice against oppression. 
+                        Your contribution ensures that no activist stands alone in the courtroom.
+                    </p>
+                </div>
+                
+                <div class="language-section">
+                    <h2>Cymraeg</h2>
+                    <p>
+                        Ymunwch â ni am noson anhygoel o gerddoriaeth reggae ymwybodol ac undod cymunedol! 
+                        Mae'r digwyddiad codi arian hwn yn dod â phŵer cerddoriaeth ac actifiaeth ynghyd i 
+                        gefnogi ein brodyr a'n chwiorydd sy'n wynebu brwydrau cyfreithiol am sefyll dros gyfiawnder.
+                    </p>
+                    <p>
+                        <strong>Mae pob punt a godir</strong> yn mynd yn uniongyrchol at dalu ffioedd cyfreithiol 
+                        i actifwyr na allant fforddio cynrychiolaeth. Pan fydd protestwyr heddychlon a threfnwyr 
+                        cymunedol yn wynebu erlyniad am amddiffyn ein hawliau a'n rhyddid, rhaid i ni sefyll gyda'n gilydd.
+                    </p>
+                    <p>
+                        Trwy ysbryd chwyldroadol reggae, rydym yn uno fel un llais yn erbyn gormes. 
+                        Mae eich cyfraniad yn sicrhau nad oes unrhyw actifydd yn sefyll ar ei ben ei hun yn y llys.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="roots-section">
+            <h2>The Roots & Culture</h2>
+            <div class="roots-content">
+                <p>
+                    <span class="highlight">"Chant Down Babylon"</span> is a powerful Rastafarian concept deeply rooted in 
+                    reggae culture and the teachings of Haile Selassie I. The phrase calls for the spiritual and peaceful 
+                    resistance against oppressive systems - what Rastas call "Babylon."
+                </p>
+                <p>
+                    In Rastafarian philosophy, <span class="highlight">Babylon represents all forms of oppression</span>: 
+                    corrupt governments, unjust legal systems, and institutions that perpetuate inequality. To "chant down" 
+                    means to use the power of word, sound, and music to weaken and ultimately overcome these forces of oppression.
+                </p>
+                <p>
+                    Bob Marley immortalized this concept in his music, using reggae as a vehicle for revolution. Through 
+                    conscious lyrics and the hypnotic one-drop rhythm, <span class="highlight">reggae became the soundtrack 
+                    of resistance</span> for oppressed people worldwide.
+                </p>
+                <p>
+                    Tonight, we continue this tradition. As we gather to support activists facing legal persecution, we embody 
+                    the spirit of "chanting down Babylon" - using our collective voice, our music, and our solidarity to 
+                    challenge injustice and support those who dare to stand against oppression.
+                </p>
+                <p>
+                    <span class="highlight">JAH RASTAFARI! One Love, One Heart, One Destiny!</span>
+                </p>
+            </div>
+            
+            <a href="https://www.crowdfunder.co.uk/p/support-activists-fighting-for-justice" class="donate-button">Donate Now</a>
+        </div>
+    </div>
+</body>
+</html>
